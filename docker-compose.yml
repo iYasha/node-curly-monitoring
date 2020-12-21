@@ -1,0 +1,10 @@
+version: '3'
+services:
+  node_monitoring:
+    container_name: node_monitoring
+    build: .
+    volumes:
+      - ./project:/code
+    env_file:
+      - ./.docker.env
+    restart: on-failure
