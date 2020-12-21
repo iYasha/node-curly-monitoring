@@ -111,7 +111,7 @@ def get_cpu() -> CPU:
         cpu_usage = [x / psutil.cpu_count() * 100 for x in psutil.getloadavg()]
     else:
         cpu_usage = [0.0, 0.0, 0.0]
-    if hasattr(psutil, "sensors_temperatures"):
+    if hasattr(psutil, "sensors_temperatures") and 'coretemp' in psutil.sensors_temperatures():
         current = []
         high = []
         critical = []
