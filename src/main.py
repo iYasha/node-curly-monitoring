@@ -1,3 +1,4 @@
+import sys
 from dataclasses import dataclass
 from dataclasses_json import dataclass_json
 import psutil
@@ -165,9 +166,13 @@ def get_docker() -> List[Docker]:
 
 
 if __name__ == '__main__':
+    if len(sys.argv) == 1:
+        print("Usage: python3 main.py [host]")
+        sys.exit(1)
+    host = sys.argv[1]
     stats = ServerStats(cpu=get_cpu(),
                         disk=get_disk(),
                         ram=get_ram(),
                         docker=get_docker()
                         )
-    requests.post(url=f'{os.getenv("MASTER_SERVER")}/server/stats', json=stats.to_json())
+    requests.post(url=f'{host}/server/stats', json=stats.to_json())
