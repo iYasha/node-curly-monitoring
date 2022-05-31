@@ -8,43 +8,14 @@ The Curly monitoring system allows you to monitor the state of the server and no
 git clone https://github.com/iYasha/node-curly-monitoring.git
 ```
 ```
-cd node-curly-monitoring
+pip install -r /path/to/node-curly-monitoring/src/requirements.txt
 ```
-```
-docker-compose up --build
-```
-
-### Prerequisites
-
-To run the project, you need to install Docker and Docker-Compose.
-Details [Here](https://docs.docker.com/compose/install/)
 
 ### Installing
 
-The first step is to set up your environment variables. To do this, run
-
+Set the following command to execute in the crontab, like this:
 ```
-mv .docker.env.example .docker.env
-```
-And customize to fit your needs
-
-## Deployment
-
-Clone repo
-```
-git clone https://github.com/iYasha/node-curly-monitoring.git
-```
-Change environment variables
-```
-mv .docker.env.example .docker.env
-```
-UP Container with build options
-```
-docker-compose up --build
-```
-Set the following command to execute in the crontab
-```
-echo "*/5 * * * * docker start node_monitoring" >> /etc/crontab
+echo "*/5 * * * * python /path/to/node-curly-monitoring/src/main.py" >> /etc/crontab
 ```
 
 ## Versioning
